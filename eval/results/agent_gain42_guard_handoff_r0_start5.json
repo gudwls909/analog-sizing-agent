@@ -1,0 +1,261 @@
+{
+ "solved": true,
+ "params": {
+  "ibias": 1.954e-05,
+  "w_tail": 36.44,
+  "l_tail": 1.219,
+  "w_in": 21.86,
+  "l_in": 0.9806,
+  "w_load": 46.28,
+  "l_load": 1.622
+ },
+ "sims": 1454,
+ "trace": {
+  "steps": [
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 15,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ss",
+     "temp": 27
+    },
+    "sims_used": 16,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_load",
+     "values": [
+      1,
+      2,
+      5,
+      10,
+      20,
+      40,
+      50
+     ],
+     "corner": "ss",
+     "temp": 27
+    },
+    "sims_used": 23,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_in",
+     "values": [
+      5,
+      10,
+      15,
+      20,
+      30,
+      40
+     ],
+     "corner": "ss",
+     "temp": 27
+    },
+    "sims_used": 29,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 44,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": -40
+    },
+    "sims_used": 45,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_in",
+     "values": [
+      0.8,
+      1.2,
+      1.6,
+      2.0,
+      3.0,
+      4.0
+     ],
+     "corner": "sf",
+     "temp": -40
+    },
+    "sims_used": 51,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 66,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 997,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 1012,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 1013,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      1.916e-05,
+      1.98e-05,
+      2.05e-05,
+      2.12e-05,
+      2.2e-05,
+      2.4e-05,
+      2.8e-05
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 1020,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 1035,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": 125
+    },
+    "sims_used": 1036,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      1.98e-05,
+      1.95e-05,
+      1.92e-05,
+      1.89e-05,
+      1.86e-05
+     ],
+     "corner": "sf",
+     "temp": 125
+    },
+    "sims_used": 1041,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 1056,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 1057,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_tail",
+     "values": [
+      0.15,
+      0.3,
+      0.6,
+      1.0,
+      1.26,
+      1.6,
+      2.0
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 1064,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 1079,
+    "error": null,
+    "passed": false
+   }
+  ],
+  "llm_calls": 19,
+  "input_tokens": 126096,
+  "output_tokens": 13831,
+  "guard_refusals": 0,
+  "handoffs": [
+   {
+    "from": 0.0072,
+    "to": 0.0004,
+    "sims_used": 996
+   },
+   {
+    "from": 0.0003,
+    "to": 0.0,
+    "sims_used": 1454
+   }
+  ],
+  "cost_usd": 0.0592,
+  "latency_s": 162.2
+ },
+ "start": "무작위 4"
+}

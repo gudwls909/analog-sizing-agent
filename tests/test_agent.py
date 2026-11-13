@@ -57,3 +57,15 @@ def test_guard_blocks_back_to_back_evaluate():
     assert r["solved"] and r["sims"] == 31 and r["trace"]["guard_refusals"] == 1
     r = agent.run(P, sim_budget=100, client=FakeLLM(calls[:2] + [calls[3]]), guard=False)
     assert r["solved"] and r["sims"] == 45 and r["trace"]["guard_refusals"] == 0  # 끄면 그대로 실행 (ablation용)
+
+
+NEAR = {"ibias": 1.974e-05, "w_tail": 40.0, "l_tail": 0.8769, "w_in": 29.12, "l_in": 2.953, "w_load": 11.04, "l_load": 1.729}  # 실제 실패 실행의 설계, 점수 0.0005
+
+
+def test_near_miss_is_handed_to_optimizer():
+    calls = [("evaluate_design", {"params": NEAR})]  # LLM은 한 번만 채점하고, 마무리는 코드가 한다
+    r = agent.run(P, sim_budget=1000, client=FakeLLM(calls))
+    assert r["solved"] and len(r["trace"]["handoffs"]) == 1 and r["trace"]["llm_calls"] == 1
+    stop = APIError("stop", request=httpx.Request("POST", "http://x"), body=None)
+    r = agent.run(P, sim_budget=1000, client=FakeLLM(calls + [stop]), handoff=False)
+    assert not r["trace"]["handoffs"]  # 끄면 넘기지 않는다

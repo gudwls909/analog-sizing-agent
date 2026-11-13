@@ -1,0 +1,284 @@
+{
+ "solved": true,
+ "params": {
+  "ibias": 1.798e-05,
+  "w_tail": 22.43,
+  "l_tail": 0.4041,
+  "w_in": 21.44,
+  "l_in": 1.355,
+  "w_load": 17.03,
+  "l_load": 1.165
+ },
+ "sims": 832,
+ "trace": {
+  "steps": [
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 15,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 16,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      1e-05,
+      1.5e-05,
+      2e-05,
+      2.5e-05,
+      3e-05
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 21,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_tail",
+     "values": [
+      1.0,
+      2.0,
+      4.0,
+      8.0,
+      16.0,
+      32.0,
+      50.0
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 28,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_in",
+     "values": [
+      1.0,
+      2.0,
+      4.0,
+      8.0,
+      16.0,
+      32.0,
+      50.0
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 35,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_load",
+     "values": [
+      0.15,
+      0.3,
+      0.5,
+      1.0,
+      2.0,
+      4.0
+     ],
+     "corner": "ff",
+     "temp": 125
+    },
+    "sims_used": 41,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ff",
+     "temp": 125
+    },
+    "sims_used": 42,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 57,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": -40
+    },
+    "sims_used": 58,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_in",
+     "values": [
+      0.15,
+      0.3,
+      0.5,
+      1.0,
+      2.0,
+      4.0
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 64,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 79,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 79,
+    "error": "거부: 직전 evaluate_design이 실패했는데 진단 없이 다시 채점하려 한다. 먼저 inspect_operating_point나 sweep_parameter로 원인을 확인하거나, 숫자 조정은 local_search에 맡겨라. (시뮬레이션은 쓰지 않았다)",
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_tail",
+     "values": [
+      0.15,
+      0.3,
+      0.5,
+      1.0,
+      2.0,
+      4.0
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 85,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 100,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ff",
+     "temp": 125
+    },
+    "sims_used": 101,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_load",
+     "values": [
+      1.0,
+      2.0,
+      4.0,
+      8.0,
+      16.0
+     ],
+     "corner": "ff",
+     "temp": 125
+    },
+    "sims_used": 106,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "local_search",
+    "args": {
+     "knobs": [
+      "ibias",
+      "w_tail",
+      "l_tail",
+      "w_in",
+      "l_in",
+      "w_load",
+      "l_load"
+     ],
+     "iterations": 100,
+     "step": 0.2,
+     "conditions": [
+      [
+       "tt",
+       27
+      ],
+      [
+       "ff",
+       125
+      ],
+      [
+       "ss",
+       -40
+      ],
+      [
+       "fs",
+       125
+      ],
+      [
+       "sf",
+       -40
+      ],
+      [
+       "tt",
+       125
+      ]
+     ]
+    },
+    "sims_used": 487,
+    "error": null,
+    "passed": false
+   }
+  ],
+  "llm_calls": 17,
+  "input_tokens": 101951,
+  "output_tokens": 22905,
+  "guard_refusals": 1,
+  "handoffs": [
+   {
+    "from": 0.0099,
+    "to": 0.0,
+    "sims_used": 832
+   }
+  ],
+  "cost_usd": 0.0713,
+  "latency_s": 361.3
+ },
+ "start": "기본값"
+}

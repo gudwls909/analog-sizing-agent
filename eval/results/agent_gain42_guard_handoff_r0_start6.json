@@ -1,0 +1,143 @@
+{
+ "solved": true,
+ "params": {
+  "ibias": 1.898e-05,
+  "w_tail": 34.42,
+  "l_tail": 0.9199,
+  "w_in": 26.25,
+  "l_in": 1.138,
+  "w_load": 40.03,
+  "l_load": 1.146
+ },
+ "sims": 288,
+ "trace": {
+  "steps": [
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 15,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 16,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {},
+    "sims_used": 16,
+    "error": "도구 인자 오류: sweep_parameter() missing 4 required positional arguments: 'name', 'values', 'corner', and 'temp'",
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_load",
+     "values": [
+      0.4851,
+      1.0,
+      2.0,
+      4.0
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 20,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      1.521e-05,
+      2e-05,
+      2.5e-05,
+      3e-05
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 24,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "tt",
+     "temp": 27
+    },
+    "sims_used": 25,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      1.6e-05,
+      1.65e-05,
+      1.7e-05,
+      1.75e-05,
+      1.8e-05,
+      1.85e-05,
+      1.9e-05
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 32,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 47,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": 125
+    },
+    "sims_used": 48,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 63,
+    "error": null,
+    "passed": false
+   }
+  ],
+  "llm_calls": 10,
+  "input_tokens": 36101,
+  "output_tokens": 7543,
+  "guard_refusals": 0,
+  "handoffs": [
+   {
+    "from": 0.0084,
+    "to": 0.0,
+    "sims_used": 288
+   }
+  ],
+  "cost_usd": 0.0241,
+  "latency_s": 81.2
+ },
+ "start": "무작위 5"
+}

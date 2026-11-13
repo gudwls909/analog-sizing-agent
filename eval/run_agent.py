@@ -14,12 +14,13 @@ from eda import spec, spice  # noqa: E402
 ap = argparse.ArgumentParser()
 ap.add_argument("--guard", type=int, default=1)
 ap.add_argument("--repeat", type=int, default=0)
+ap.add_argument("--handoff", type=int, default=0)
 ap.add_argument("starts", type=int, nargs="+")
 a = ap.parse_args()
-tag = f"{'guard' if a.guard else 'noguard'}_r{a.repeat}"
+tag = f"{'guard' if a.guard else 'noguard'}{'_handoff' if a.handoff else ''}_r{a.repeat}"
 for i in a.starts:
     name, st = ("기본값", {k: spice.DEFAULT[k] for k in spec.BOUNDS}) if i == 0 else (f"무작위 {i - 1}", sample(random.Random(1000 + i - 1)))
-    r = agent.run(st, sim_budget=2000, guard=bool(a.guard))
+    r = agent.run(st, sim_budget=2000, guard=bool(a.guard), handoff=bool(a.handoff))
     r["start"] = name
     t = r["trace"]
     print(f"{tag} {name}: {'해결' if r['solved'] else '실패 — ' + r['reason'][:80]}  시뮬레이션 {r['sims']}회, LLM {t['llm_calls']}회, ${t['cost_usd']}, {t['latency_s']}s", flush=True)

@@ -132,3 +132,4 @@ def local_search(budget, params, knobs, iterations=30, step=0.15, conditions=Non
     return {"tried": tried, "best_params": {k: float(f"{v:.4g}") for k, v in best.items()},
             "score_on_conditions": None if math.isinf(best_score) else round(best_score, 4),
             "full_check": _summary(full)}
+

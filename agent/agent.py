@@ -100,13 +100,25 @@ def guard_refuses(name, last):
     return name == "evaluate_design" and last is not None and last[0] == "evaluate_design" and not last[1]
 
 
-def run(start_params, sim_budget=2000, client=None, guard=True):
+HANDOFF_SCORE = 0.01  # 실패 19개를 오프라인으로 마무리해 보니 1% 이내는 8개 중 7개가 최적화기로 통과 (기록 10번)
+
+
+def scored(name, args, out):
+    """도구 결과에서 15개 조건 전체 점수와 그 설계를 꺼낸다 (없으면 None)"""
+    if name == "evaluate_design" and out.get("score") is not None:
+        return out["score"], args["params"]
+    if name == "local_search" and out.get("full_check", {}).get("score") is not None:
+        return out["full_check"]["score"], out["best_params"]
+
+
+def run(start_params, sim_budget=2000, client=None, guard=True, handoff=True):
     client = client or OpenAI()
     budget = tools.Budget(sim_budget)
     start = {k: float(f"{start_params[k]:.4g}") for k in spec.BOUNDS}
     messages = [{"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": f"시작 설계: {json.dumps(start)}. 시뮬레이션 예산 {sim_budget}회 안에 스펙을 맞춰라."}]
-    trace = {"steps": [], "llm_calls": 0, "input_tokens": 0, "output_tokens": 0, "guard_refusals": 0}
+    trace = {"steps": [], "llm_calls": 0, "input_tokens": 0, "output_tokens": 0, "guard_refusals": 0, "handoffs": []}
+    handoff_floor = float("inf")  # 마무리를 시도한 점수보다 더 좋아졌을 때만 다시 시도
     last = None  # (도구 이름, 통과했나)
     t0 = time.time()
     result = {"solved": False, "reason": "단계 한도"}
@@ -124,7 +136,7 @@ def run(start_params, sim_budget=2000, client=None, guard=True):
         if not msg.tool_calls:
             result = {"solved": False, "reason": "Agent가 도구 없이 끝냄: " + (msg.content or "")[:300]}
             break
-        done = None
+        done, near = None, None
         for call in msg.tool_calls:
             try:
                 args = json.loads(call.function.arguments)
@@ -143,6 +155,22 @@ def run(start_params, sim_budget=2000, client=None, guard=True):
                                    "passed": out.get("passed", out.get("full_check", {}).get("passed"))})
             messages.append({"role": "tool", "tool_call_id": call.id, "content": json.dumps(out, ensure_ascii=False)})
             done = done or passed_params(call.function.name, args, out)
+            sc = scored(call.function.name, args, out)
+            if sc and 0 < sc[0] <= HANDOFF_SCORE and sc[0] < handoff_floor and (near is None or sc[0] < near[0]):
+                near = sc
+        if not done and near and handoff:
+            # 거의 통과: 마지막 미세 조정은 LLM이 아니라 최적화기가 15개 조건 전부로 채점하며 한다
+            iters = min(60, (sim_budget - budget.used) // len(spec.ALL_POINTS) - 1)
+            if iters >= 1:
+                ls = tools.local_search(budget, near[1], list(spec.BOUNDS), iterations=iters, step=0.05)
+                fc = ls.get("full_check", {})
+                trace["handoffs"].append({"from": near[0], "to": fc.get("score"), "sims_used": budget.used})
+                handoff_floor = fc.get("score") if fc.get("score") is not None else near[0]
+                if fc.get("passed"):
+                    done = ls["best_params"]
+                else:
+                    messages.append({"role": "user", "content": "시스템이 거의 통과한 설계를 최적화기(15개 조건 전체 채점)로 마무리하려 했지만 통과하지 못했다. "
+                                     + json.dumps({"best_params": ls.get("best_params"), "result": fc, "budget_left": sim_budget - budget.used}, ensure_ascii=False)})
         if done:
             result = {"solved": True, "params": done}
             break
