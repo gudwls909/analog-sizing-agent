@@ -38,15 +38,16 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--budget", type=int, default=2000)
     ap.add_argument("--seeds", type=int, default=10)
+    ap.add_argument("--seed-start", type=int, default=0)
     a = ap.parse_args()
     t0, out = time.time(), []
-    for s in range(a.seeds):
+    for s in range(a.seed_start, a.seed_start + a.seeds):
         r = run(a.budget, s)
         out.append(r)
         print(f"seed {s}: {'해결' if r['solved'] else '실패'}  시뮬레이션 {r['sims']}회", flush=True)
     solved = [r["sims"] for r in out if r["solved"]]
     print(f"\n해결 {len(solved)}/{a.seeds}, 해결까지 시뮬레이션 중앙값 "
           f"{sorted(solved)[len(solved) // 2] if solved else '-'}, 전체 {time.time() - t0:.0f}초")
-    path = f"eval/results/random_search_b{a.budget}.json"
+    path = f"eval/results/random_search_gain{spec.SPEC['gain_db'][1]:.0f}_b{a.budget}_s{a.seed_start}-{a.seed_start + a.seeds - 1}.json"
     json.dump(out, open(path, "w"), indent=1)
     print("저장:", path)

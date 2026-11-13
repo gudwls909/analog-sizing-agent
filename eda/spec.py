@@ -10,11 +10,14 @@ from eda import spice
 from eda.analysis import EDGE_V, check_operating_point
 
 # 성능 스펙: 이름 -> (방향, 값)
+# 난이도는 데이터로 정했다 (eval/sample_space.py, 무작위 설계 3000개 × 15조건):
+#   40dB / 100uW: 11/3000 통과 → random search 중앙값 295회로 너무 쉬움 (기록 5번)
+#   42dB / 70uW : 2/3000 통과 (0.07%) → 어렵지만 해가 있다는 것은 확인됨. 더 조인 스펙은 0/3000이라 해가 있는지 모름
 SPEC = {
-    "gain_db": (">=", 40.0),
+    "gain_db": (">=", 42.0),
     "ugf_hz": (">=", 20e6),
     "pm_deg": (">=", 60.0),
-    "power_w": ("<=", 100e-6),
+    "power_w": ("<=", 70e-6),
 }
 
 # 설계자가 바꿀 수 있는 손잡이와 범위. vcm(앞단이 정함)과 cl(부하)은 문제 조건이라 고정
