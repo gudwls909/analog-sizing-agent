@@ -85,15 +85,19 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--budget", type=int, default=2000)
     ap.add_argument("--starts", type=int, default=10)
+    ap.add_argument("--set", choices=["dev", "heldout"], default="dev")
     a = ap.parse_args()
-    starts = [("기본값", {k: spice.DEFAULT[k] for k in spec.BOUNDS})]
-    starts += [(f"무작위 {s}", sample(random.Random(1000 + s))) for s in range(a.starts)]
+    if a.set == "heldout":  # eval/run_agent.py --set heldout 과 같은 시작점
+        starts = [(f"held-out {s}", sample(random.Random(5000 + s))) for s in range(a.starts)]
+    else:
+        starts = [("기본값", {k: spice.DEFAULT[k] for k in spec.BOUNDS})]
+        starts += [(f"무작위 {s}", sample(random.Random(1000 + s))) for s in range(a.starts)]
     out = []
     for name, st in starts:
         r = run(st, a.budget)
         r["start"] = name
         out.append(r)
         print(f"{name}: {'해결' if r['solved'] else '실패 — ' + r['reason']}  시뮬레이션 {r['sims']}회, 규칙 {len(r['history'])}번", flush=True)
-    path = f"eval/results/rule_based_gain{spec.SPEC['gain_db'][1]:.0f}_b{a.budget}.json"
+    path = f"eval/results/rule_based_gain{spec.SPEC['gain_db'][1]:.0f}_b{a.budget}{'_heldout' if a.set == 'heldout' else ''}.json"
     json.dump(out, open(path, "w"), indent=1, ensure_ascii=False)
     print("저장:", path)

@@ -15,11 +15,15 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--guard", type=int, default=1)
 ap.add_argument("--repeat", type=int, default=0)
 ap.add_argument("--handoff", type=int, default=0)
+ap.add_argument("--set", choices=["dev", "heldout"], default="dev")  # heldout: 무작위 5000~5009, 결과를 보고 Agent를 고치지 않는다
 ap.add_argument("starts", type=int, nargs="+")
 a = ap.parse_args()
-tag = f"{'guard' if a.guard else 'noguard'}{'_handoff' if a.handoff else ''}_r{a.repeat}"
+tag = f"{'heldout_' if a.set == 'heldout' else ''}{'guard' if a.guard else 'noguard'}{'_handoff' if a.handoff else ''}_r{a.repeat}"
 for i in a.starts:
-    name, st = ("기본값", {k: spice.DEFAULT[k] for k in spec.BOUNDS}) if i == 0 else (f"무작위 {i - 1}", sample(random.Random(1000 + i - 1)))
+    if a.set == "heldout":
+        name, st = f"held-out {i}", sample(random.Random(5000 + i))
+    else:
+        name, st = ("기본값", {k: spice.DEFAULT[k] for k in spec.BOUNDS}) if i == 0 else (f"무작위 {i - 1}", sample(random.Random(1000 + i - 1)))
     r = agent.run(st, sim_budget=2000, guard=bool(a.guard), handoff=bool(a.handoff))
     r["start"] = name
     t = r["trace"]
