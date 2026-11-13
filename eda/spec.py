@@ -67,7 +67,8 @@ def evaluate(params, points=ALL_POINTS):
         gaps["sat_margin"] = max(0.0, (EDGE_V - worst_margin) / EDGE_V)
         rows.append({"corner": corner, "temp": temp, "ok": True,
                      "metrics": {k: m[k] for k in SPEC}, "worst_margin_v": worst_margin,
-                     "op_summary": op["summary"], "gaps": gaps})
+                     "op_summary": op["summary"], "gaps": gaps,
+                     "devices": [{k: d[k] for k in ("device", "region", "margin_v")} for d in op["devices"]]})
         score = max(score, sum(gaps.values()))  # 최악 조건 기준
     passed = score == 0.0
     failing = [r for r in rows if not r["ok"] or sum(r["gaps"].values()) > 0]

@@ -1,0 +1,883 @@
+[
+ {
+  "solved": true,
+  "sims": 300,
+  "params": {
+   "ibias": 1.8e-05,
+   "w_tail": 50.0,
+   "l_tail": 1.0,
+   "w_in": 50.0,
+   "l_in": 2.413404500000001,
+   "w_load": 19.307236000000007,
+   "l_load": 1.9307236000000008
+  },
+  "history": [
+   {
+    "score": 2.208,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 1.567,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 1.098,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.778,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.538,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.338,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.178,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.16,
+    "worst": "sf 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.153,
+    "worst": "ff 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.085,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.061,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.039,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.028,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.017,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.01,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.007,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.005,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.003,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.003,
+    "worst": "sf -40°C",
+    "rule": "PM 부족 → 부하 L ×0.8"
+   }
+  ],
+  "start": "기본값"
+ },
+ {
+  "solved": false,
+  "sims": 300,
+  "reason": "8번 연속 개선 없음 (맴돎)",
+  "best_score": 0.024536404673979502,
+  "history": [
+   {
+    "score": 0.703,
+    "worst": "sf 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.517,
+    "worst": "sf 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.357,
+    "worst": "sf 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.245,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.162,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.109,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.076,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.039,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.035,
+    "worst": "fs 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.031,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.027,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.025,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.025,
+    "worst": "ff -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.05,
+    "worst": "ff -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.07,
+    "worst": "sf -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.07,
+    "worst": "sf -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.07,
+    "worst": "sf -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.07,
+    "worst": "sf -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.07,
+    "worst": "sf -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   }
+  ],
+  "start": "무작위 0"
+ },
+ {
+  "solved": false,
+  "sims": 420,
+  "reason": "8번 연속 개선 없음 (맴돎)",
+  "best_score": 0.016876875969969687,
+  "history": [
+   {
+    "score": 8.946,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 6.426,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 4.732,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 3.468,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 2.365,
+    "worst": "fs 27°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 1.729,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 1.247,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.993,
+    "worst": "sf 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.835,
+    "worst": "sf 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.693,
+    "worst": "sf 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.564,
+    "worst": "sf 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.449,
+    "worst": "sf 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.404,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.304,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.221,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.171,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.12,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.077,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.038,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.017,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.017,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.017,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.017,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.017,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.017,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.017,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.017,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   }
+  ],
+  "start": "무작위 1"
+ },
+ {
+  "solved": false,
+  "sims": 225,
+  "reason": "8번 연속 개선 없음 (맴돎)",
+  "best_score": 0.34344734953009515,
+  "history": [
+   {
+    "score": 1.244,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.965,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.644,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.503,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.403,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.363,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.343,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.343,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.343,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.343,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.343,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.343,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.343,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.343,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   }
+  ],
+  "start": "무작위 2"
+ },
+ {
+  "solved": false,
+  "sims": 210,
+  "reason": "8번 연속 개선 없음 (맴돎)",
+  "best_score": 0.1222266666666666,
+  "history": [
+   {
+    "score": 2.082,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 1.321,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.64,
+    "worst": "fs 125°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.3,
+    "worst": "fs -40°C",
+    "rule": "mt 포화 여유 부족 → w_tail ×1.5"
+   },
+   {
+    "score": 0.14,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.122,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.13,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.142,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.154,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.169,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.195,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.237,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.388,
+    "worst": "sf -40°C",
+    "rule": "m1 포화 여유 부족 → w_in ×1.5"
+   }
+  ],
+  "start": "무작위 3"
+ },
+ {
+  "solved": false,
+  "sims": 15,
+  "history": [],
+  "reason": "측정 실패 (sf -40°C): 측정 누락=['ugf_hz', 'pm_deg']",
+  "start": "무작위 4"
+ },
+ {
+  "solved": true,
+  "sims": 60,
+  "params": {
+   "ibias": 1.672911959786211e-05,
+   "w_tail": 34.10215736622203,
+   "l_tail": 0.8759683443006855,
+   "w_in": 50.0,
+   "l_in": 1.6644925001413962,
+   "w_load": 50.0,
+   "l_load": 0.8197578730992396
+  },
+  "history": [
+   {
+    "score": 0.105,
+    "worst": "fs 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.038,
+    "worst": "fs 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.004,
+    "worst": "fs 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   }
+  ],
+  "start": "무작위 5"
+ },
+ {
+  "solved": false,
+  "sims": 315,
+  "reason": "8번 연속 개선 없음 (맴돎)",
+  "best_score": 0.008503094481892166,
+  "history": [
+   {
+    "score": 0.245,
+    "worst": "ff 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.189,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.149,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.108,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.081,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.055,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.031,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.03,
+    "worst": "sf 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.028,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.023,
+    "worst": "tt 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.018,
+    "worst": "tt 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.013,
+    "worst": "tt 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.009,
+    "worst": "tt 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.009,
+    "worst": "sf -40°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.032,
+    "worst": "sf -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.032,
+    "worst": "sf -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.032,
+    "worst": "sf -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.032,
+    "worst": "sf -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.032,
+    "worst": "sf -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.032,
+    "worst": "sf -40°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   }
+  ],
+  "start": "무작위 6"
+ },
+ {
+  "solved": true,
+  "sims": 150,
+  "params": {
+   "ibias": 1.9070604058994694e-05,
+   "w_tail": 22.90858181273566,
+   "l_tail": 1.0541278984546167,
+   "w_in": 50.0,
+   "l_in": 3.7614914512925015,
+   "w_load": 50.0,
+   "l_load": 0.6892594135939603
+  },
+  "history": [
+   {
+    "score": 1.009,
+    "worst": "fs 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.831,
+    "worst": "fs 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.671,
+    "worst": "fs 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.526,
+    "worst": "fs 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.395,
+    "worst": "fs 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.278,
+    "worst": "fs 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.21,
+    "worst": "fs 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.144,
+    "worst": "fs 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.047,
+    "worst": "fs 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   }
+  ],
+  "start": "무작위 7"
+ },
+ {
+  "solved": false,
+  "sims": 15,
+  "history": [],
+  "reason": "측정 실패 (sf 27°C): 측정 누락=['ugf_hz', 'pm_deg']",
+  "start": "무작위 8"
+ },
+ {
+  "solved": false,
+  "sims": 450,
+  "reason": "8번 연속 개선 없음 (맴돎)",
+  "best_score": 0.0021761385388813686,
+  "history": [
+   {
+    "score": 0.068,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.064,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.06,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.058,
+    "worst": "fs 125°C",
+    "rule": "gain 부족 → 입력쌍·부하 L, W ×1.3"
+   },
+   {
+    "score": 0.057,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.053,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.05,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.046,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.043,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.039,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.036,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.033,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 있음) → ibias ×1.1"
+   },
+   {
+    "score": 0.03,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.023,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.017,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.018,
+    "worst": "fs 125°C",
+    "rule": "전력 초과 → ibias ×0.9"
+   },
+   {
+    "score": 0.016,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.012,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.008,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.019,
+    "worst": "sf -40°C",
+    "rule": "PM 부족 → 부하 L ×0.8"
+   },
+   {
+    "score": 0.003,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.002,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.002,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.002,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.002,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.002,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.002,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.002,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   },
+   {
+    "score": 0.002,
+    "worst": "ss 125°C",
+    "rule": "UGF 부족 (전력 여유 없음) → 입력쌍 W ×1.3"
+   }
+  ],
+  "start": "무작위 9"
+ }
+]

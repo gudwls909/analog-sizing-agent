@@ -30,7 +30,7 @@ pytest   # 실제 ngspice 실행, 약 1분 (대부분 세션 첫 로딩)
 - [x] `eda/analysis.py`: 트랜지스터별 포화 여유(|Vds| − Vdsat), tail 미러 전류 비율, 고유 이득(gm/gds) → "스펙은 맞는데 회로가 건강하지 않음"을 판정. 기본 사이징의 tail이 15개 구간 전부 선형 영역임을 발견 ([기록 3번](docs/troubleshooting_log.md))
 - [x] `eda/spec.py`: 스펙(gain ≥ 42dB, UGF ≥ 20MHz, PM ≥ 60°, 전력 ≤ 70µW, 포화 여유 ≥ 50mV, 15개 조건 전부), 손잡이 범위, 채점(최악 조건의 부족분 합). 난이도는 무작위 설계 3000개로 보정 ([기록 6번](docs/troubleshooting_log.md))
 - [x] `baselines/random_search.py`: 2000회 예산으로 **2/10 해결** (494, 1497회). 실패한 8개도 TT는 통과한 후보를 찾음 → 어려운 건 corner (이전 스펙은 10/10, 중앙값 295회)
-- [ ] 규칙 기반 베이스라인
+- [x] `baselines/rule_based.py`: 교과서 규칙. 기본값 시작은 300회로 해결, 무작위 시작은 2/10 — 막힌 6개 전부 손잡이가 범위 끝에 붙음 ([기록 7번](docs/troubleshooting_log.md))
 - [ ] Agent: 도구 선택과 실행 계획
 - [ ] 최적화기 연결 (random search, 규칙 기반 → BO)
 - [ ] corner 검증, 베이스라인 비교 (LLM 단독 / 최적화기 단독 / hybrid)
