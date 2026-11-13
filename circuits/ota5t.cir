@@ -19,6 +19,7 @@ let power_w = -i(vdd)*1.8
 let vout_dc = v(out)
 let vtail = v(tail)
 print power_w vout_dc vtail
+* OP_PROBES (eda/spice.py가 트랜지스터별 동작점 출력으로 바꾼다)
 ac dec 50 1 10G
 meas ac gain_db find vdb(out) at=10
 meas ac ugf_hz when vdb(out)=0

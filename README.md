@@ -11,7 +11,7 @@
 conda create -n eda-agent -c conda-forge python=3.11 ngspice pytest
 pip install volare
 volare enable --pdk sky130 --pdk-root ~/pdk -l sky130_fd_pr c6d73a35f524070e85faff4a6a9eef49553ebc2b   # 소자 모델만, 216MB
-pytest   # 실제 ngspice 실행, 약 30초
+pytest   # 실제 ngspice 실행, 약 1분
 ```
 
 ## 기준 회로 (5T OTA, 기본 사이징)
@@ -27,7 +27,7 @@ pytest   # 실제 ngspice 실행, 약 30초
 ## 구성
 
 - [x] `eda/spice.py`: 넷리스트 채우기 → ngspice 실행 → 측정값 추출, 호출 횟수·시간 기록, 실패·무효 측정 보고
-- [ ] 측정·동작점(saturation) 분석 도구
+- [x] `eda/analysis.py`: 트랜지스터별 포화 여유(|Vds| − Vdsat), tail 미러 전류 비율, 고유 이득(gm/gds) → "스펙은 맞는데 회로가 건강하지 않음"을 판정. 기본 사이징의 tail이 15개 구간 전부 선형 영역임을 발견 ([기록 3번](docs/troubleshooting_log.md))
 - [ ] Agent: 도구 선택과 실행 계획
 - [ ] 최적화기 연결 (random search, 규칙 기반 → BO)
 - [ ] corner 검증, 베이스라인 비교 (LLM 단독 / 최적화기 단독 / hybrid)

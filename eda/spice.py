@@ -20,7 +20,20 @@ NGSPICE = shutil.which("ngspice") or os.path.expanduser("~/anaconda3/envs/eda-ag
 # 검증된 시작점 (TT: gain 36.5dB, UGF 22MHz, PM 89.5°, 67uW). 단위: W/L um
 DEFAULT = {"ibias": 20e-6, "wt": 4, "lt": 1, "wn": 4, "ln": 0.5, "wp": 4, "lp": 0.5, "cl": 1e-12, "vcm": 0.9}
 CORNERS = ["tt", "ff", "ss", "sf", "fs"]
-METRIC = re.compile(r"^(\w+)\s*=\s*([-+0-9.eE]+)\s*$")
+METRIC = re.compile(r"^(?:\w+\.)?(\w+)\s*=\s*([-+0-9.eE]+)\s*$")  # ngspice가 "op1.", "const." 접두어를 붙인다
+
+# 동작점을 볼 트랜지스터: 이름 -> (ngspice 내부 경로, 역할). SKY130 소자는 subckt 안의 M 소자다
+DEVICES = {
+    "mb": ("xmb.msky130_fd_pr__nfet_01v8", "bias 미러 (다이오드 연결)"),
+    "mt": ("xmt.msky130_fd_pr__nfet_01v8", "tail 전류원"),
+    "m1": ("xm1.msky130_fd_pr__nfet_01v8", "입력쌍 (+)"),
+    "m2": ("xm2.msky130_fd_pr__nfet_01v8", "입력쌍 (-)"),
+    "m3": ("xm3.msky130_fd_pr__pfet_01v8", "부하 미러 (다이오드 연결)"),
+    "m4": ("xm4.msky130_fd_pr__pfet_01v8", "부하 미러 (출력)"),
+}
+OP_PARAMS = ["id", "gm", "gds", "vgs", "vds", "vth", "vdsat"]
+OP_PROBES = "\n".join(f"let {d}_{q} = @m.{path}[{q}]" for d, (path, _) in DEVICES.items() for q in OP_PARAMS) \
+    + "\nprint " + " ".join(f"{d}_{q}" for d in DEVICES for q in OP_PARAMS)
 
 stats = {"calls": 0, "time_s": 0.0}
 
@@ -30,6 +43,7 @@ def simulate(params=None, corner="tt", temp=27, timeout=120):
     if corner not in CORNERS:
         return {"ok": False, "metrics": {}, "error": f"모르는 corner: {corner}", "sim_time_s": 0.0}
     netlist = open(CIRCUIT).read().format(pdk=PDK, corner=corner, temp=temp, **p)
+    netlist = re.sub(r"^\* OP_PROBES.*$", lambda _: OP_PROBES, netlist, count=1, flags=re.M)
     t0 = time.time()
     with tempfile.TemporaryDirectory() as d:  # 실행마다 따로: corner 병렬 실행 가능
         shutil.copy(SPICEINIT, d)
