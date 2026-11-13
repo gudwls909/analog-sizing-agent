@@ -90,13 +90,24 @@ def passed_params(name, args, result):
         return result["best_params"]
 
 
-def run(start_params, sim_budget=2000, client=None):
+GUARD_MSG = ("거부: 직전 evaluate_design이 실패했는데 진단 없이 다시 채점하려 한다. "
+             "먼저 inspect_operating_point나 sweep_parameter로 원인을 확인하거나, 숫자 조정은 local_search에 맡겨라. (시뮬레이션은 쓰지 않았다)")
+
+
+def guard_refuses(name, last):
+    """1차 평가의 실패 패턴(진단 없이 evaluate를 연달아 부르며 손으로 숫자를 바꿈, 기록 8번)을 코드로 막는다.
+    프롬프트에 "진단 없이 숫자를 바꾸지 마라"고 써도 지키지 않았다."""
+    return name == "evaluate_design" and last is not None and last[0] == "evaluate_design" and not last[1]
+
+
+def run(start_params, sim_budget=2000, client=None, guard=True):
     client = client or OpenAI()
     budget = tools.Budget(sim_budget)
     start = {k: float(f"{start_params[k]:.4g}") for k in spec.BOUNDS}
     messages = [{"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": f"시작 설계: {json.dumps(start)}. 시뮬레이션 예산 {sim_budget}회 안에 스펙을 맞춰라."}]
-    trace = {"steps": [], "llm_calls": 0, "input_tokens": 0, "output_tokens": 0}
+    trace = {"steps": [], "llm_calls": 0, "input_tokens": 0, "output_tokens": 0, "guard_refusals": 0}
+    last = None  # (도구 이름, 통과했나)
     t0 = time.time()
     result = {"solved": False, "reason": "단계 한도"}
     for _ in range(MAX_STEPS):
@@ -120,7 +131,12 @@ def run(start_params, sim_budget=2000, client=None):
             except json.JSONDecodeError:
                 args, out = {}, {"error": "인자가 JSON이 아니다"}
             else:
-                out = call_tool(budget, call.function.name, args)
+                if guard and guard_refuses(call.function.name, last):
+                    out = {"error": GUARD_MSG}
+                    trace["guard_refusals"] += 1
+                else:
+                    out = call_tool(budget, call.function.name, args)
+                    last = (call.function.name, bool(out.get("passed")))
             out["budget_left"] = sim_budget - budget.used
             trace["steps"].append({"tool": call.function.name, "args": {k: v for k, v in args.items() if k != "params"},
                                    "sims_used": budget.used, "error": out.get("error"),

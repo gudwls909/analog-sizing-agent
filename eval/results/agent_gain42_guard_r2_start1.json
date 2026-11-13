@@ -1,0 +1,496 @@
+{
+ "solved": true,
+ "params": {
+  "ibias": 1.879e-05,
+  "w_tail": 13.74,
+  "l_tail": 0.3133,
+  "w_in": 49.71,
+  "l_in": 3.204,
+  "w_load": 21.63,
+  "l_load": 0.6173
+ },
+ "sims": 453,
+ "trace": {
+  "steps": [
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 15,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": 125
+    },
+    "sims_used": 16,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {},
+    "sims_used": 16,
+    "error": "도구 인자 오류: sweep_parameter() missing 4 required positional arguments: 'name', 'values', 'corner', and 'temp'",
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {},
+    "sims_used": 16,
+    "error": "도구 인자 오류: sweep_parameter() missing 4 required positional arguments: 'name', 'values', 'corner', and 'temp'",
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_in",
+     "values": [
+      0.15,
+      0.3,
+      0.6,
+      0.6971,
+      1.2,
+      2.4,
+      4.0
+     ],
+     "corner": "sf",
+     "temp": 125
+    },
+    "sims_used": 23,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_in",
+     "values": [
+      1.0,
+      2.0,
+      4.0,
+      8.0,
+      16.0,
+      32.0,
+      50.0
+     ],
+     "corner": "sf",
+     "temp": 125
+    },
+    "sims_used": 30,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": -40
+    },
+    "sims_used": 31,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 32,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": 125
+    },
+    "sims_used": 33,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "ibias": 2.995e-05,
+     "w_tail": 13.74,
+     "l_tail": 0.2077,
+     "w_in": 3.978,
+     "l_in": 0.6971,
+     "w_load": 8.099,
+     "l_load": 3.725,
+     "name": "ibias",
+     "values": [
+      1e-05,
+      1.5e-05,
+      2e-05,
+      2.5e-05,
+      3e-05,
+      4e-05
+     ],
+     "corner": "sf",
+     "temp": 125
+    },
+    "sims_used": 33,
+    "error": "도구 인자 오류: sweep_parameter() got an unexpected keyword argument 'ibias'",
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_tail",
+     "values": [
+      1.0,
+      4.0,
+      8.0,
+      13.74,
+      20.0,
+      30.0,
+      50.0
+     ],
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 40,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      5e-06,
+      1e-05,
+      2e-05,
+      2.995e-05,
+      4e-05,
+      5e-05
+     ],
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 46,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 61,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ff",
+     "temp": -40
+    },
+    "sims_used": 62,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_in",
+     "values": [
+      1.0,
+      2.0,
+      3.978,
+      6.0,
+      8.0,
+      12.0,
+      16.0
+     ],
+     "corner": "sf",
+     "temp": 125
+    },
+    "sims_used": 69,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 84,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 85,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 100,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 100,
+    "error": "거부: 직전 evaluate_design이 실패했는데 진단 없이 다시 채점하려 한다. 먼저 inspect_operating_point나 sweep_parameter로 원인을 확인하거나, 숫자 조정은 local_search에 맡겨라. (시뮬레이션은 쓰지 않았다)",
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": -40
+    },
+    "sims_used": 101,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_in",
+     "values": [
+      0.6,
+      1.2,
+      2.4,
+      4.0
+     ],
+     "corner": "sf",
+     "temp": 125
+    },
+    "sims_used": 105,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "local_search",
+    "args": {
+     "knobs": [
+      "ibias",
+      "w_in",
+      "l_in",
+      "l_tail"
+     ],
+     "iterations": 80,
+     "step": 0.2,
+     "conditions": [
+      [
+       "sf",
+       125
+      ],
+      [
+       "ss",
+       125
+      ],
+      [
+       "tt",
+       27
+      ]
+     ]
+    },
+    "sims_used": 303,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      1e-05,
+      1.219e-05,
+      1.5e-05,
+      2e-05,
+      3e-05
+     ],
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 308,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 323,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 324,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      1.219e-05,
+      1.5e-05,
+      1.8e-05,
+      2e-05,
+      2.4e-05
+     ],
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 329,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 344,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 345,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_load",
+     "values": [
+      1.0,
+      2.0,
+      4.0,
+      8.0,
+      16.0,
+      32.0
+     ],
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 351,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_tail",
+     "values": [
+      0.15,
+      0.2,
+      0.3133,
+      0.5,
+      1.0,
+      2.0,
+      4.0
+     ],
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 358,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 373,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "tt",
+     "temp": -40
+    },
+    "sims_used": 374,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 375,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 390,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 390,
+    "error": "거부: 직전 evaluate_design이 실패했는데 진단 없이 다시 채점하려 한다. 먼저 inspect_operating_point나 sweep_parameter로 원인을 확인하거나, 숫자 조정은 local_search에 맡겨라. (시뮬레이션은 쓰지 않았다)",
+    "passed": null
+   },
+   {
+    "tool": "local_search",
+    "args": {
+     "knobs": [
+      "ibias",
+      "w_in",
+      "l_in",
+      "w_load",
+      "l_load"
+     ],
+     "iterations": 120,
+     "step": 0.2,
+     "conditions": [
+      [
+       "ss",
+       125
+      ],
+      [
+       "tt",
+       125
+      ],
+      [
+       "ff",
+       125
+      ]
+     ]
+    },
+    "sims_used": 453,
+    "error": null,
+    "passed": true
+   }
+  ],
+  "llm_calls": 36,
+  "input_tokens": 399170,
+  "output_tokens": 43341,
+  "guard_refusals": 2,
+  "cost_usd": 0.1865,
+  "latency_s": 445.4
+ },
+ "start": "무작위 0"
+}

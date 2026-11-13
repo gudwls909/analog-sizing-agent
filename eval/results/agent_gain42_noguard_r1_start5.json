@@ -1,0 +1,460 @@
+{
+ "solved": true,
+ "params": {
+  "ibias": 1.928e-05,
+  "w_tail": 45.54,
+  "l_tail": 1.124,
+  "w_in": 44.49,
+  "l_in": 1.855,
+  "w_load": 22.1,
+  "l_load": 2.29
+ },
+ "sims": 447,
+ "trace": {
+  "steps": [
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 15,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ss",
+     "temp": 27
+    },
+    "sims_used": 16,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {},
+    "sims_used": 16,
+    "error": "도구 인자 오류: sweep_parameter() missing 4 required positional arguments: 'name', 'values', 'corner', and 'temp'",
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_load",
+     "values": [
+      2.085,
+      5,
+      10,
+      20,
+      50
+     ],
+     "corner": "ss",
+     "temp": 27
+    },
+    "sims_used": 21,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 36,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": -40
+    },
+    "sims_used": 37,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {},
+    "sims_used": 37,
+    "error": "도구 인자 오류: sweep_parameter() missing 4 required positional arguments: 'name', 'values', 'corner', and 'temp'",
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      1.319e-05,
+      2e-05,
+      3e-05,
+      4e-05,
+      5e-05
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 42,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 43,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_in",
+     "values": [
+      5,
+      10,
+      15.05,
+      20,
+      30
+     ],
+     "corner": "tt",
+     "temp": 27
+    },
+    "sims_used": 48,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_in",
+     "values": [
+      0.15,
+      0.3,
+      0.5,
+      0.7975,
+      1.5
+     ],
+     "corner": "ss",
+     "temp": 27
+    },
+    "sims_used": 53,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_load",
+     "values": [
+      0.15,
+      0.3,
+      1.0,
+      2.29,
+      4.0
+     ],
+     "corner": "ff",
+     "temp": 27
+    },
+    "sims_used": 58,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 73,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "local_search",
+    "args": {
+     "knobs": [
+      "ibias",
+      "w_in",
+      "l_in"
+     ],
+     "iterations": 300,
+     "step": 0.15,
+     "conditions": [
+      [
+       "fs",
+       125
+      ],
+      [
+       "tt",
+       27
+      ],
+      [
+       "ff",
+       27
+      ]
+     ]
+    },
+    "sims_used": 271,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": -40
+    },
+    "sims_used": 272,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 287,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      1.6e-05,
+      1.8e-05,
+      1.9e-05,
+      1.981e-05,
+      2.1e-05
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 292,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 293,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "ibias": 1.9e-05,
+     "w_tail": 45.54,
+     "l_tail": 1.124,
+     "w_in": 20.96,
+     "l_in": 0.9458,
+     "w_load": 50,
+     "l_load": 4.0,
+     "name": "w_load",
+     "values": [
+      50,
+      20,
+      10,
+      5,
+      2.085
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 293,
+    "error": "도구 인자 오류: sweep_parameter() got an unexpected keyword argument 'ibias'",
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "ibias": 1.9e-05,
+     "w_tail": 45.54,
+     "l_tail": 1.124,
+     "w_in": 20.96,
+     "l_in": 0.9458,
+     "w_load": 50,
+     "l_load": 4.0,
+     "name": "w_in",
+     "values": [
+      20.96,
+      30,
+      35,
+      40,
+      50
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 293,
+    "error": "도구 인자 오류: sweep_parameter() got an unexpected keyword argument 'ibias'",
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_load",
+     "values": [
+      50,
+      20,
+      10,
+      5,
+      2.085
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 298,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_in",
+     "values": [
+      20.96,
+      30,
+      35,
+      40,
+      50
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 303,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "local_search",
+    "args": {
+     "knobs": [
+      "w_in",
+      "ibias",
+      "w_load"
+     ],
+     "iterations": 200,
+     "step": 0.2,
+     "conditions": [
+      [
+       "fs",
+       125
+      ],
+      [
+       "ss",
+       27
+      ],
+      [
+       "tt",
+       27
+      ]
+     ]
+    },
+    "sims_used": 366,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": -40
+    },
+    "sims_used": 367,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_tail",
+     "values": [
+      1,
+      5,
+      10,
+      20,
+      45.54
+     ],
+     "corner": "sf",
+     "temp": -40
+    },
+    "sims_used": 372,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": -40
+    },
+    "sims_used": 373,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 388,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_in",
+     "values": [
+      0.9458,
+      1.2,
+      1.5,
+      2.0,
+      3.0
+     ],
+     "corner": "sf",
+     "temp": -40
+    },
+    "sims_used": 393,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "local_search",
+    "args": {
+     "knobs": [
+      "l_in",
+      "w_load",
+      "w_in"
+     ],
+     "iterations": 120,
+     "step": 0.2,
+     "conditions": [
+      [
+       "sf",
+       -40
+      ],
+      [
+       "ss",
+       27
+      ],
+      [
+       "ss",
+       125
+      ]
+     ]
+    },
+    "sims_used": 447,
+    "error": null,
+    "passed": true
+   }
+  ],
+  "llm_calls": 28,
+  "input_tokens": 227567,
+  "output_tokens": 13398,
+  "guard_refusals": 0,
+  "cost_usd": 0.0837,
+  "latency_s": 160.3
+ },
+ "start": "무작위 4"
+}

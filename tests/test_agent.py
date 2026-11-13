@@ -38,7 +38,7 @@ def test_stops_when_code_grading_passes():
     # 통과는 LLM 말이 아니라 채점 결과로: 해가 있는 설계를 평가하는 순간 끝난다 (그 뒤 호출은 쓰이지 않음)
     llm = FakeLLM([("evaluate_design", {"params": P}), ("evaluate_design", {"params": feasible()}),
                    ("evaluate_design", {"params": P})])
-    r = agent.run(P, sim_budget=100, client=llm)
+    r = agent.run(P, sim_budget=100, client=llm, guard=False)
     assert r["solved"] and r["sims"] == 30 and len(llm.calls) == 1
 
 
@@ -47,3 +47,13 @@ def test_bad_tool_args_and_api_error_do_not_crash():
     r = agent.run(P, sim_budget=100, client=FakeLLM([("evaluate_design", {"params": {"ibias": 1}}), err]))
     assert not r["solved"] and "API 오류" in r["reason"] and r["sims"] == 0
     assert "빠짐" in json.loads(r["messages"][3]["content"])["error"]  # 잘못된 인자는 이유와 함께 돌려준다
+
+
+def test_guard_blocks_back_to_back_evaluate():
+    calls = [("evaluate_design", {"params": P}), ("evaluate_design", {"params": P}),  # 두 번째는 거부 (시뮬레이션 0)
+             ("inspect_operating_point", {"params": P, "corner": "tt", "temp": 27}),
+             ("evaluate_design", {"params": feasible()})]  # 진단 뒤에는 허용
+    r = agent.run(P, sim_budget=100, client=FakeLLM(calls))
+    assert r["solved"] and r["sims"] == 31 and r["trace"]["guard_refusals"] == 1
+    r = agent.run(P, sim_budget=100, client=FakeLLM(calls[:2] + [calls[3]]), guard=False)
+    assert r["solved"] and r["sims"] == 45 and r["trace"]["guard_refusals"] == 0  # 끄면 그대로 실행 (ablation용)

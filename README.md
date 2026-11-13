@@ -32,6 +32,7 @@ pytest   # 실제 ngspice 실행, 약 1분 (대부분 세션 첫 로딩)
 - [x] `baselines/random_search.py`: 2000회 예산으로 **2/10 해결** (494, 1497회). 실패한 8개도 TT는 통과한 후보를 찾음 → 어려운 건 corner (이전 스펙은 10/10, 중앙값 295회)
 - [x] `baselines/rule_based.py`: 교과서 규칙. 기본값 시작은 300회로 해결, 무작위 시작은 2/10 — 막힌 6개 전부 손잡이가 범위 끝에 붙음 ([기록 7번](docs/troubleshooting_log.md))
 - [x] `agent/agent.py` + `eda/tools.py`: 도구 4개(채점, 동작점, sweep, local_search). 범위·예산·통과 판정은 코드. 무작위 시작 **8/10 해결**(규칙 2/10, random search 2/10), 실패는 전부 LLM 단계 한도 ([기록 8번](docs/troubleshooting_log.md))
-- [ ] 반복 실행으로 해결률 오차 줄이기, "진단 없이 숫자 바꾸기"를 코드로 막기
+- [x] 시작점 11개 × 3회 반복: Agent **24/33 해결**. "진단 없이 숫자 바꾸기" 금지(guard)는 효과 없음(차이 −0.03, CI [−0.15, +0.09]). 실패 대부분이 2% 이내로 거의 통과한 채 LLM 단계 한도 ([기록 9번](docs/troubleshooting_log.md))
+- [ ] 마지막 미세 조정 개선 (거의 통과하면 최적화기로 넘기기)
 - [ ] 최적화기 연결 (random search, 규칙 기반 → BO)
 - [ ] corner 검증, 베이스라인 비교 (LLM 단독 / 최적화기 단독 / hybrid)

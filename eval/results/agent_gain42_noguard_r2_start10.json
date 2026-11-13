@@ -1,0 +1,143 @@
+{
+ "solved": true,
+ "params": {
+  "ibias": 2.057e-05,
+  "w_tail": 6.73,
+  "l_tail": 0.1935,
+  "w_in": 43.15,
+  "l_in": 3.072,
+  "w_load": 30.81,
+  "l_load": 0.7822
+ },
+ "sims": 107,
+ "trace": {
+  "steps": [
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 15,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 16,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_in",
+     "values": [
+      7.724,
+      15,
+      25,
+      35,
+      50
+     ],
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 21,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      7.571e-06,
+      1.2e-05,
+      2e-05,
+      3e-05,
+      4e-05,
+      5e-05
+     ],
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 27,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_load",
+     "values": [
+      0.15,
+      0.3,
+      0.6,
+      0.7822,
+      1.5,
+      3.0
+     ],
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 33,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_in",
+     "values": [
+      3.072,
+      1.5,
+      0.6,
+      0.3,
+      0.15
+     ],
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 38,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "local_search",
+    "args": {
+     "knobs": [
+      "ibias",
+      "w_in"
+     ],
+     "iterations": 60,
+     "step": 0.2,
+     "conditions": [
+      [
+       "ss",
+       125
+      ],
+      [
+       "tt",
+       27
+      ],
+      [
+       "ff",
+       125
+      ]
+     ]
+    },
+    "sims_used": 107,
+    "error": null,
+    "passed": true
+   }
+  ],
+  "llm_calls": 7,
+  "input_tokens": 21241,
+  "output_tokens": 7575,
+  "guard_refusals": 0,
+  "cost_usd": 0.0205,
+  "latency_s": 76.9
+ },
+ "start": "무작위 9"
+}
