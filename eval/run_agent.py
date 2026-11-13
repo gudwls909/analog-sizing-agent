@@ -28,4 +28,5 @@ for i in a.starts:
     r["start"] = name
     t = r["trace"]
     print(f"{tag} {name}: {'해결' if r['solved'] else '실패 — ' + r['reason'][:80]}  시뮬레이션 {r['sims']}회, LLM {t['llm_calls']}회, ${t['cost_usd']}, {t['latency_s']}s", flush=True)
+    r.pop("messages")  # LLM 대화 기록은 저장하지 않는다 (요약·trace만)
     json.dump(r, open(f"eval/results/agent_gain{spec.SPEC['gain_db'][1]:.0f}_{tag}_start{i}.json", "w"), ensure_ascii=False, indent=1, default=str)
