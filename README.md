@@ -11,7 +11,7 @@
 conda create -n eda-agent -c conda-forge python=3.11 ngspice pytest
 pip install volare
 volare enable --pdk sky130 --pdk-root ~/pdk -l sky130_fd_pr c6d73a35f524070e85faff4a6a9eef49553ebc2b   # 소자 모델만, 216MB
-pytest   # 실제 ngspice 실행, 약 1분
+pytest   # 실제 ngspice 실행, 약 1분 (대부분 세션 첫 로딩)
 ```
 
 ## 기준 회로 (5T OTA, 기본 사이징)
@@ -22,12 +22,15 @@ pytest   # 실제 ngspice 실행, 약 1분
 | ss | 37.1dB / 23.2MHz | 36.9dB / 20.5MHz | 36.4dB / 17.4MHz |
 | ff | 36.3dB / 26.6MHz | 36.1dB / 23.4MHz | 35.6dB / 19.8MHz |
 
-5 corner × 3 온도 15회, 8개 병렬. 시뮬레이션 1회 약 12초(대부분 모델 로딩).
+5 corner × 3 온도. (corner, 온도)마다 ngspice 세션을 띄워 두고 파라미터만 바꿔 다시 계산: 1회 0.05초, 15개 조건 전체 0.16초 (첫 로딩 18초).
 
 ## 구성
 
-- [x] `eda/spice.py`: 넷리스트 채우기 → ngspice 실행 → 측정값 추출, 호출 횟수·시간 기록, 실패·무효 측정 보고
+- [x] `eda/spice.py`: 상주 ngspice 세션 → 측정값 추출, 호출 횟수·시간 기록, 실패·무효 측정 보고
 - [x] `eda/analysis.py`: 트랜지스터별 포화 여유(|Vds| − Vdsat), tail 미러 전류 비율, 고유 이득(gm/gds) → "스펙은 맞는데 회로가 건강하지 않음"을 판정. 기본 사이징의 tail이 15개 구간 전부 선형 영역임을 발견 ([기록 3번](docs/troubleshooting_log.md))
+- [x] `eda/spec.py`: 스펙(gain ≥ 40dB, UGF ≥ 20MHz, PM ≥ 60°, 전력 ≤ 100µW, 포화 여유 ≥ 50mV, 15개 조건 전부), 손잡이 범위, 채점(최악 조건의 부족분 합)
+- [x] `baselines/random_search.py`: 10/10 해결, 시뮬레이션 중앙값 295회 → 스펙이 쉬운 편 ([기록 5번](docs/troubleshooting_log.md))
+- [ ] 규칙 기반 베이스라인
 - [ ] Agent: 도구 선택과 실행 계획
 - [ ] 최적화기 연결 (random search, 규칙 기반 → BO)
 - [ ] corner 검증, 베이스라인 비교 (LLM 단독 / 최적화기 단독 / hybrid)

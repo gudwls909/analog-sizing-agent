@@ -1,30 +1,19 @@
 * 5T OTA (NMOS 입력 차동쌍 + PMOS 전류 미러 부하), SKY130 1.8V 소자
-* 중괄호로 감싼 이름은 eda/spice.py가 채운다 (주석에 중괄호 금지: str.format). W/L 단위 um
-.lib {pdk}/libs.tech/ngspice/sky130.lib.spice {corner}
-.temp {temp}
+* __PDK__ __CORNER__ __TEMP__ 는 eda/spice.py가 채운다 (세션마다 고정).
+* .param 값은 실행 중에 alterparam으로 바꾼다. W/L 단위 um
+* 이름에 ngspice 함수명(ln, exp, sqrt 등)을 쓰면 안 된다: l=ln 이 자연로그로 해석돼 세션이 멈췄다 (기록 4번)
+.lib __PDK__/libs.tech/ngspice/sky130.lib.spice __CORNER__
+.temp __TEMP__
+.param ibias=20u w_tail=4 l_tail=1 w_in=4 l_in=0.5 w_load=4 l_load=0.5 cl=1p vcm=0.9
 VDD vdd 0 1.8
 VINP inp 0 DC {vcm} AC 0.5
 VINN inn 0 DC {vcm} AC -0.5
 IBIAS vdd nbias {ibias}
-XMB nbias nbias 0 0 sky130_fd_pr__nfet_01v8 W={wt} L={lt}
-XMT tail nbias 0 0 sky130_fd_pr__nfet_01v8 W={wt} L={lt}
-XM1 x inp tail 0 sky130_fd_pr__nfet_01v8 W={wn} L={ln}
-XM2 out inn tail 0 sky130_fd_pr__nfet_01v8 W={wn} L={ln}
-XM3 x x vdd vdd sky130_fd_pr__pfet_01v8 W={wp} L={lp}
-XM4 out x vdd vdd sky130_fd_pr__pfet_01v8 W={wp} L={lp}
+XMB nbias nbias 0 0 sky130_fd_pr__nfet_01v8 W={w_tail} L={l_tail}
+XMT tail nbias 0 0 sky130_fd_pr__nfet_01v8 W={w_tail} L={l_tail}
+XM1 x inp tail 0 sky130_fd_pr__nfet_01v8 W={w_in} L={l_in}
+XM2 out inn tail 0 sky130_fd_pr__nfet_01v8 W={w_in} L={l_in}
+XM3 x x vdd vdd sky130_fd_pr__pfet_01v8 W={w_load} L={l_load}
+XM4 out x vdd vdd sky130_fd_pr__pfet_01v8 W={w_load} L={l_load}
 CL out 0 {cl}
-.control
-op
-let power_w = -i(vdd)*1.8
-let vout_dc = v(out)
-let vtail = v(tail)
-print power_w vout_dc vtail
-* OP_PROBES (eda/spice.py가 트랜지스터별 동작점 출력으로 바꾼다)
-ac dec 50 1 10G
-meas ac gain_db find vdb(out) at=10
-meas ac ugf_hz when vdb(out)=0
-meas ac phase_ugf find vp(out) at=ugf_hz
-let pm_deg = 180 + phase_ugf*180/pi
-print pm_deg
-.endc
 .end
