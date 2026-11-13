@@ -13,7 +13,7 @@ def test_default_ota_tt():
 
 def test_failure_is_reported_not_raised():
     r = spice.simulate({"ibias": 1e-12})  # 바이어스가 거의 0
-    assert not r["ok"] and "측정 무효" in r["error"]  # 숫자는 나오지만(누설로 7Hz에서 0dB 교차) 의미 없음
+    assert not r["ok"] and "측정 무효" in r["error"]  # 숫자는 나오지만(UGF 7Hz) 쓸 수 없는 증폭기
     assert not spice.simulate(corner="xx")["ok"]
 
 

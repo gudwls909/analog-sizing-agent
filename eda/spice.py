@@ -54,7 +54,7 @@ def simulate(params=None, corner="tt", temp=27, timeout=120):
         tail = "\n".join(l for l in out.splitlines() if "rror" in l or "arning" in l or "fail" in l.lower())[-1500:]
         return {"ok": False, "metrics": metrics, "error": f"exit={code}, 측정 누락={missing}\n{tail}", "sim_time_s": dt}
     if metrics["ugf_hz"] <= 10 or metrics["gain_db"] <= 0:
-        # 바이어스가 사실상 0이면 누설 전류 때문에 10Hz 아래에서 0dB 교차가 "측정"된다. 숫자는 나오지만 의미 없음
+        # 대역폭은 bias 전류에 비례한다 (20uA: 22MHz, 1nA: 2.3kHz, 1pA: 7Hz). 1pA면 측정 범위(10Hz) 아래로 내려가고, 전류가 누설과 비슷해 동작점을 믿을 수 없다
         return {"ok": False, "metrics": metrics, "sim_time_s": dt,
                 "error": f"측정 무효: gain(10Hz)={metrics['gain_db']:.1f}dB, UGF={metrics['ugf_hz']:.1f}Hz — 회로가 증폭기로 동작하지 않음 (바이어스 확인)"}
     return {"ok": True, "metrics": metrics, "error": None, "sim_time_s": dt}
