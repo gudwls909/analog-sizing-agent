@@ -1,0 +1,140 @@
+{
+ "solved": true,
+ "params": {
+  "ibias": 1.963e-05,
+  "w_tail": 3.091,
+  "l_tail": 0.5506,
+  "w_in": 35.68,
+  "l_in": 1.855,
+  "w_load": 20.59,
+  "l_load": 2.193
+ },
+ "sims": 202,
+ "trace": {
+  "steps": [
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 15,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 16,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      5e-06,
+      1e-05,
+      2e-05,
+      3e-05,
+      4e-05,
+      4.853e-05,
+      5e-05
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 23,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 38,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 39,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_tail",
+     "values": [
+      1.0,
+      2.0,
+      3.425,
+      5.0,
+      10.0,
+      20.0,
+      50.0
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 46,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": -40
+    },
+    "sims_used": 47,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_in",
+     "values": [
+      20,
+      25,
+      30,
+      35,
+      40
+     ],
+     "corner": "tt",
+     "temp": 125
+    },
+    "sims_used": 52,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 67,
+    "error": null,
+    "passed": false
+   }
+  ],
+  "llm_calls": 9,
+  "input_tokens": 34578,
+  "output_tokens": 7834,
+  "guard_refusals": 0,
+  "handoffs": [
+   {
+    "from": 0.0009,
+    "to": 0.0,
+    "sims_used": 202
+   }
+  ],
+  "cost_usd": 0.0243,
+  "latency_s": 86.8
+ },
+ "start": "held-out 9"
+}

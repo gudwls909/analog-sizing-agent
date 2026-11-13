@@ -1,0 +1,351 @@
+{
+ "solved": false,
+ "reason": "예산 소진",
+ "sims": 1999,
+ "trace": {
+  "steps": [
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 15,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": 27
+    },
+    "sims_used": 16,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      6.671e-06,
+      1e-05,
+      2e-05,
+      3e-05,
+      4e-05
+     ],
+     "corner": "sf",
+     "temp": 27
+    },
+    "sims_used": 21,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": 27
+    },
+    "sims_used": 22,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_load",
+     "values": [
+      1.616,
+      3,
+      6,
+      12,
+      24,
+      48
+     ],
+     "corner": "sf",
+     "temp": 27
+    },
+    "sims_used": 28,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": 27
+    },
+    "sims_used": 29,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      6.671e-06,
+      1e-05,
+      2e-05,
+      3e-05,
+      4e-05
+     ],
+     "corner": "sf",
+     "temp": 27
+    },
+    "sims_used": 34,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "l_in",
+     "values": [
+      0.15,
+      0.3,
+      0.4964,
+      1.0,
+      2.0,
+      4.0
+     ],
+     "corner": "sf",
+     "temp": 27
+    },
+    "sims_used": 40,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_in",
+     "values": [
+      11.91,
+      24,
+      48
+     ],
+     "corner": "sf",
+     "temp": 27
+    },
+    "sims_used": 43,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 58,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 989,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ff",
+     "temp": 125
+    },
+    "sims_used": 990,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "w_in",
+     "values": [
+      26.28,
+      32,
+      36,
+      40,
+      44,
+      48
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 996,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "tt",
+     "temp": 125
+    },
+    "sims_used": 997,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "ss",
+     "temp": 125
+    },
+    "sims_used": 998,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      1.889e-05,
+      2.05e-05,
+      2.2e-05,
+      2.4e-05,
+      2.6e-05
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 1003,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "evaluate_design",
+    "args": {},
+    "sims_used": 1018,
+    "error": null,
+    "passed": false
+   },
+   {
+    "tool": "inspect_operating_point",
+    "args": {
+     "corner": "sf",
+     "temp": 125
+    },
+    "sims_used": 1019,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "sweep_parameter",
+    "args": {
+     "name": "ibias",
+     "values": [
+      1.84e-05,
+      1.889e-05,
+      1.95e-05,
+      2e-05,
+      2.05e-05
+     ],
+     "corner": "fs",
+     "temp": 125
+    },
+    "sims_used": 1024,
+    "error": null,
+    "passed": null
+   },
+   {
+    "tool": "local_search",
+    "args": {
+     "knobs": [
+      "ibias",
+      "w_in",
+      "w_load"
+     ],
+     "iterations": 80,
+     "step": 0.05,
+     "conditions": [
+      [
+       "tt",
+       -40
+      ],
+      [
+       "tt",
+       27
+      ],
+      [
+       "tt",
+       125
+      ],
+      [
+       "ff",
+       -40
+      ],
+      [
+       "ff",
+       27
+      ],
+      [
+       "ff",
+       125
+      ],
+      [
+       "ss",
+       -40
+      ],
+      [
+       "ss",
+       27
+      ],
+      [
+       "ss",
+       125
+      ],
+      [
+       "sf",
+       -40
+      ],
+      [
+       "sf",
+       27
+      ],
+      [
+       "sf",
+       125
+      ],
+      [
+       "fs",
+       -40
+      ],
+      [
+       "fs",
+       27
+      ],
+      [
+       "fs",
+       125
+      ]
+     ]
+    },
+    "sims_used": 1954,
+    "error": null,
+    "passed": false
+   }
+  ],
+  "llm_calls": 20,
+  "input_tokens": 144632,
+  "output_tokens": 15503,
+  "guard_refusals": 0,
+  "handoffs": [
+   {
+    "from": 0.0086,
+    "to": 0.0054,
+    "sims_used": 988
+   },
+   {
+    "from": 0.0022,
+    "to": 0.0022,
+    "sims_used": 1999
+   }
+  ],
+  "cost_usd": 0.0672,
+  "latency_s": 195.3
+ },
+ "start": "held-out 7"
+}

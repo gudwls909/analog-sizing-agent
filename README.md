@@ -34,6 +34,6 @@ pytest   # 실제 ngspice 실행, 약 1분 (대부분 세션 첫 로딩)
 - [x] `agent/agent.py` + `eda/tools.py`: 도구 4개(채점, 동작점, sweep, local_search). 범위·예산·통과 판정은 코드. 무작위 시작 **8/10 해결**(규칙 2/10, random search 2/10), 실패는 전부 LLM 단계 한도 ([기록 8번](docs/troubleshooting_log.md))
 - [x] 시작점 11개 × 3회 반복: Agent **24/33 해결**. "진단 없이 숫자 바꾸기" 금지(guard)는 효과 없음(차이 −0.03, CI [−0.15, +0.09]). 실패 대부분이 2% 이내로 거의 통과한 채 LLM 단계 한도 ([기록 9번](docs/troubleshooting_log.md))
 - [x] 거의 통과(점수 1% 이내)하면 코드가 최적화기로 넘김: **29/33 해결**(넘김 없음 23/33), 차이 +0.18, CI [+0.06, +0.30]. LLM 호출·비용 −26%, 시뮬레이션은 늘어남. 기준은 같은 시작점에서 정한 dev 점수 ([기록 10번](docs/troubleshooting_log.md))
-- [ ] held-out 시작점으로 확인, 베이스라인도 같은 반복 조건으로
+- [x] held-out 시작점 10개 × 3회 (규칙을 먼저 커밋): Agent **25/30**, 규칙 3/10. 넘김의 해결률 효과는 **재현 안 됨**(+0.00, CI [−0.17, +0.20]), LLM 비용만 −25% ([기록 11번](docs/troubleshooting_log.md))
 - [ ] 최적화기 연결 (random search, 규칙 기반 → BO)
 - [ ] corner 검증, 베이스라인 비교 (LLM 단독 / 최적화기 단독 / hybrid)
